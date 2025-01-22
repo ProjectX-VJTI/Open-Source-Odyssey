@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+
+}
+
+.gruppo-regular {
+    font-family: "Gruppo", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  @layer utilities {
+    .shadow-gradient {
+      box-shadow: 0 25px 50px -12px rgba(199, 21, 133, 0.25), 0 35px 60px -15px rgba(25, 25, 112, 0.3);
+    }
+  }
+
+  @keyframes bounceLess {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px); 
+    }
+    60% {
+      transform: translateY(-5px); 
+    }
+  }
+  
+  .animate-bounce-less {
+    animation: bounceLess 1s infinite;
+  }
+
+  body {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 transparent; /* For Firefox */
+  }
+#root::-webkit-scrollbar {
+  width: 5px;
+}
+
+#root::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+#root::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+  .bgC{
+    background-image: repeating-linear-gradient(157deg, rgba(237,225,225, 0.05) 0px, rgba(237,225,225, 0.05) 1px,transparent 1px, transparent 11px,rgba(237,225,225, 0.05) 11px, rgba(237,225,225, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(112deg, rgba(237,225,225, 0.05) 0px, rgba(237,225,225, 0.05) 1px,transparent 1px, transparent 11px,rgba(237,225,225, 0.05) 11px, rgba(237,225,225, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(247deg, rgba(237,225,225, 0.05) 0px, rgba(237,225,225, 0.05) 1px,transparent 1px, transparent 11px,rgba(237,225,225, 0.05) 11px, rgba(237,225,225, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(202deg, rgba(237,225,225, 0.05) 0px, rgba(237,225,225, 0.05) 1px,transparent 1px, transparent 11px,rgba(237,225,225, 0.05) 11px, rgba(237,225,225, 0.05) 12px,transparent 12px, transparent 32px),linear-gradient(202deg, rgb(1, 9, 29),rgb(7, 14, 49));
+  }

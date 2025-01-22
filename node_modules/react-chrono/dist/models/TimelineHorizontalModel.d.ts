@@ -1,0 +1,58 @@
+import { ReactNode } from 'react';
+import { TimelineCardModel } from './TimelineItemModel';
+import { TimelineMode } from './TimelineModel';
+/**
+ * Represents the model for a horizontal timeline.
+ */
+export interface TimelineHorizontalModel {
+    autoScroll: (t: Partial<Scroll>) => void;
+    contentDetailsChildren?: ReactNode | ReactNode[];
+    handleItemClick: (id?: string) => void;
+    hasFocus?: boolean;
+    iconChildren?: ReactNode;
+    isNested?: boolean;
+    itemWidth?: number;
+    items: TimelineCardModel[];
+    mode?: TimelineMode;
+    nestedCardHeight?: number;
+    onElapsed?: (id?: string) => void;
+    slideShowRunning?: boolean;
+    wrapperId: string;
+}
+export interface Scroll {
+    /**
+     * Height of the Timeline card content
+     *
+     * @type {number}
+     * @memberof Scroll
+     */
+    contentHeight: number;
+    /**
+     * Offset of the Content card
+     *
+     * @type {number}
+     * @memberof Scroll
+     */
+    contentOffset: number;
+    /**
+     * Offset of the timeline point
+     *
+     * @type {number}
+     * @memberof Scroll
+     */
+    pointOffset: number;
+    /**
+     * Width of the timeline point
+     *
+     * @type {number}
+     * @memberof Scroll
+     */
+    pointWidth: number;
+    /**
+     * Height of the timeline point
+     *
+     * @type {number}
+     * @memberof Scroll
+     */
+    timelinePointHeight: number;
+}

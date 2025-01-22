@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.glass-effect {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 2rem;
+  }
+  
+  .text-bounce {
+    animation: bounce 2s infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+
+@layer utilities {
+  .shadow-gradient {
+    box-shadow: 20px 40px 60px -12px rgba(129, 55, 214, 0.25), 0 35px 60px -15px rgba(84, 84, 239, 0.3);
+  }
+}
+
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .font-tech {
+    font-family: 'Orbitron', sans-serif; 
+  }
+  
+  .text-purple-blue {
+    color: #6a5acd; 
+  }
+
+  body {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 transparent; /* For Firefox */
+  }
+  
+  /* For WebKit-based browsers like Chrome, Edge, Safari */
+  body::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+
+.title {
+  color:aliceblue;
+}
+  
+
+  
