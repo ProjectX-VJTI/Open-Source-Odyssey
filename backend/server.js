@@ -1,3 +1,4 @@
+// backend/server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
@@ -27,6 +28,7 @@ const proposalSchema = new mongoose.Schema({
   email: String,
   phone: String,
   file: String, // Store the file path in MongoDB
+  fileName: String, // Store the original file name in MongoDB
 });
 
 const Proposal = mongoose.model('Proposal', proposalSchema);
@@ -44,7 +46,7 @@ const storage = multer.diskStorage({
     cb(null, uploadsDir); // Ensure the directory exists
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+    cb(null, file.originalname); // Use the original file name
   },
 });
 
@@ -66,12 +68,13 @@ app.post('/api/submit-proposal', upload.single('file'), async (req, res) => {
       email,
       phone,
       file: filePath, // Store the file path in MongoDB
+      fileName: file.originalname, // Store the original file name in MongoDB
     };
 
     const proposal = new Proposal(proposalData);
     await proposal.save();
 
-    // Send confirmation email
+    // Send confirmation email with user-specific details
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
@@ -84,7 +87,7 @@ app.post('/api/submit-proposal', upload.single('file'), async (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: 'Proposal Submission Confirmation',
-      text: 'Thank you for submitting your proposal. We have received it and will review it shortly.',
+      text: `Thank you for submitting your proposal, ${name}. We have received it and will review it shortly.`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

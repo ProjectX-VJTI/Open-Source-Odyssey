@@ -86,7 +86,7 @@ const ProposalForm = () => {
     <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
       {successMessage && (
         <div
-          className="bg-green-100 border-l-4 border-green-400 text-green-700 p-4 mb-4 rounded relative transition-opacity duration-500"
+          className="bg-green-100 border-l-4 border-green-400 text-green-700 p-4 mb-4 rounded relative transition-opacity duration-500 ease-in-out"
           style={{ opacity: successMessage ? 1 : 0 }}
           role="alert"
         >
