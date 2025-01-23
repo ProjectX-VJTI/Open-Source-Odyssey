@@ -1,9 +1,20 @@
 import Carousel from '../components/Carousel';
 import Hero from '../components/Hero';
+import { motion } from 'framer-motion';
 
 const Homepage = () => {
     return (
-        <div>
+        <motion.div
+            variants={{
+                initial: { opacity: 0, x: -100 },
+                animate: { opacity: 1, x: 0 },
+                exit: { opacity: 0, x: 100 },
+            }}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+        >
             <Hero />
             {/* Text Section between Hero and Carousel */}
             <div className="text-center py-8 px-4 md:px-12 bg-opacity-10 text-white">
@@ -22,7 +33,7 @@ const Homepage = () => {
             <div>
                 <Carousel />
             </div>
-        </div>
+        </motion.div>
     );
 };
 
