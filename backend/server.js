@@ -1,6 +1,5 @@
 // backend/server.js
 const express = require('express');
-const mongoose = require('mongoose');
 const multer = require('multer');
 const nodemailer = require('nodemailer');
 const path = require('path');
@@ -16,22 +15,6 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
-
-// Define Proposal Schema
-const proposalSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  phone: String,
-  file: String, // Store the file path in MongoDB
-  fileName: String, // Store the original file name in MongoDB
-});
-
-const Proposal = mongoose.model('Proposal', proposalSchema);
 
 // Ensure the uploads directory exists
 const fs = require('fs');
@@ -52,7 +35,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Handle file uploads and save to MongoDB
+// List of recipient emails
+const recipientEmails = ['skshah_b23@ce.vjti.ac.in','vmshah_b22@ce.vjti.ac.in','vedantmehra20@gmail.com']; // Add more emails if needed
+
+// Handle file uploads and send email
 app.post('/api/submit-proposal', upload.single('file'), async (req, res) => {
   try {
     const { name, email, phone } = req.body;
@@ -63,18 +49,8 @@ app.post('/api/submit-proposal', upload.single('file'), async (req, res) => {
     }
 
     const filePath = file.path; // Get the file path
-    const proposalData = {
-      name,
-      email,
-      phone,
-      file: filePath, // Store the file path in MongoDB
-      fileName: file.originalname, // Store the original file name in MongoDB
-    };
 
-    const proposal = new Proposal(proposalData);
-    await proposal.save();
-
-    // Send confirmation email with user-specific details
+    // Send confirmation email to the user
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
@@ -83,24 +59,54 @@ app.post('/api/submit-proposal', upload.single('file'), async (req, res) => {
       },
     });
 
-    const mailOptions = {
+    const userMailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
       subject: 'Proposal Submission Confirmation',
       text: `Thank you for submitting your proposal, ${name}. We have received it and will review it shortly.`,
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
+    transporter.sendMail(userMailOptions, (error, info) => {
       if (error) {
-        console.error('Email sending error:', error);
-        return res.status(500).json({ message: 'Error sending confirmation email.' });
+        console.error('User email sending error:', error);
+        return res.status(500).json({ message: 'Error sending confirmation email to user.' });
       }
-      console.log('Email sent: ' + info.response);
+      console.log('User email sent: ' + info.response);
     });
 
-    res.status(200).json({ message: 'Proposal submitted successfully!' });
+    // Send proposal email to recipients
+    const proposalMailOptions = {
+      from: process.env.EMAIL_USER,
+      to: recipientEmails.join(', '), // Join recipient emails with commas
+      subject: `Proposal from ${name}`,
+      text: `A new proposal has been submitted by ${name} (${email}, Phone: ${phone}).`,
+      attachments: [
+        {
+          path: filePath,
+        },
+      ],
+    };
+
+    transporter.sendMail(proposalMailOptions, (error, info) => {
+      if (error) {
+        console.error('Proposal email sending error:', error);
+        return res.status(500).json({ message: 'Error sending proposal email.' });
+      }
+      console.log('Proposal email sent: ' + info.response);
+
+      // Optionally, delete the file after sending the email
+      fs.unlink(filePath, (err) => {
+        if (err) {
+          console.error('Error deleting file:', err);
+        } else {
+          console.log('File deleted successfully');
+        }
+      });
+
+      res.status(200).json({ message: 'Proposal submitted successfully!' });
+    });
   } catch (error) {
-    console.error('Error saving proposal:', error);
+    console.error('Error processing proposal:', error);
     res.status(500).json({ message: 'Error submitting proposal.' });
   }
 });
