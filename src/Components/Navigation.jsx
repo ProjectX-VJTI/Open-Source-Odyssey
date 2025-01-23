@@ -62,15 +62,15 @@ class RenderByUsingCallback extends Component {
 
 const Navigation = () => {
   return (
-    <nav className="flex justify-between items-center p-4 bg-gradient-to-r bg-slate-900 border-b-2 border-gray-700">
-      <div className="flex items-center">
+    <nav className="flex justify-center items-center p-4 bg-gradient-to-r bg-slate-900 border-b-2 border-gray-700">
+      <div className="flex items-center space-x-6">
         <img src={logo} alt="Logo" className="h-12 w-12 mr-3 rounded-full" />
         <span className="text-3xl font-mono font-bold text-white shadow-md">ProjectX</span>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center mx-auto">
         <RenderByUsingCallback />
       </div>
-      <div className="flex font-mono space-x-6">
+      <div className="flex font-mono items-center space-x-6">
         <Link to="/" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Home</Link>
         <Link to="/events" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Events</Link>
         <Link to="/projects" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Projects</Link>
