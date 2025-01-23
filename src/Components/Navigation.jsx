@@ -16,6 +16,7 @@ const Navigation = () => {
         <Link to="/projects" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Projects</Link>
         <Link to="/achievements" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Achievements</Link>
         {/* <Link to="/staff" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Staff</Link> */}
+        <Link to="/proposal" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Proposal</Link>
       </div>
     </nav>
   );
