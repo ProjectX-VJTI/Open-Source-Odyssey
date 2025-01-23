@@ -6,7 +6,6 @@ const CardRow = () => {
   return (
     <div className="relative h-[91.5vh] w-full bg-transparent flex ">
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
-
     <div className="flex flex-row max-md:flex-col w-full h-[90vh] items-stretch">
       <div className="md:w-1/2 m-6 flex justify-center items-center p-4">
         <Card title="Upcoming Project 2k24" link="/upcoming-projects" />

@@ -1,8 +1,6 @@
 import React from "react";
 import CircularCard from "./CircularCard";
-import myHook from "./Context";
 const Achievements = () => {
-  const { siteMode } = myHook();
   return (
     <div className="min-h-screen flex flex-col justify-center items-center w-[100%]">
       <h1 className="text-center mx-auto text-5xl font-mono py-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-300 to-red-300">
