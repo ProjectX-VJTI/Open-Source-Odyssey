@@ -1,6 +1,6 @@
 import React from "react";
 import { Chrono } from "react-chrono";
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import "../App.css";
 
 const Events = () => {
@@ -68,13 +68,13 @@ const Events = () => {
   ];
 
   const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        ease: "easeInOut",
+        duration: 2,
+        ease: easeInOut,
       },
     },
   };
@@ -105,7 +105,7 @@ const Events = () => {
               dotColor: "#0b228c",
             }}
             className={{
-              card: "rounded-lg shadow-lg",
+              card: "rounded-lg shadow-lg chrono-card",
               cardMedia: "rounded-t-lg",
               cardSubTitle: "text-sm font-medium",
               cardTitle: "text-lg font-bold",
