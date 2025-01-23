@@ -24,6 +24,7 @@ const Hero = () => {
       >
         <use href="src/assets/wordcloud.svg" />
       </svg>
+      {/* <div></div> */}
     </div>
   );
 };
