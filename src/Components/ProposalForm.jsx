@@ -1,4 +1,3 @@
-// src/components/ProposalForm.jsx
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is imported
@@ -12,6 +11,7 @@ const ProposalForm = () => {
   });
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
+  const [fileName, setFileName] = useState('No file chosen');
   const fileInputRef = useRef(null);
 
   const validate = () => {
@@ -27,6 +27,9 @@ const ProposalForm = () => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+    if (name === 'file' && files && files[0]) {
+      setFileName(files[0].name); // Update the file name
+    }
     setFormData({
       ...formData,
       [name]: files ? files[0] : value,
@@ -57,6 +60,7 @@ const ProposalForm = () => {
       setSuccessMessage(response.data.message);
       // Clear form data and errors
       setFormData({ name: '', email: '', phone: '', file: null });
+      setFileName('No file chosen'); // Reset file name
       setErrors({});
       // Reset file input
       if (fileInputRef.current) {
@@ -126,15 +130,22 @@ const ProposalForm = () => {
       </div>
       <div className="space-y-2">
         <label htmlFor="file" className="block text-white-700 font-semibold">Proposal PDF</label>
+        <div className="flex items-center">
+          <label
+            htmlFor="file"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer transition-colors duration-200"
+          >
+            Choose File
+          </label>
+          <span className="ml-4 text-white-700">{fileName}</span>
+        </div>
         <input
           type="file"
           id="file"
           name="file"
           accept=".pdf"
           onChange={handleChange}
-          className={`w-full px-4 py-3 rounded-lg border text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none ${
-            errors.file ? 'border-red-500' : 'border-gray-300'
-          }`}
+          className="hidden"
           ref={fileInputRef}
         />
         {errors.file && <p className="text-red-500 text-sm mt-1">{errors.file}</p>}

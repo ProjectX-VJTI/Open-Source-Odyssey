@@ -63,7 +63,7 @@ app.post('/api/submit-proposal', upload.single('file'), async (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: 'Proposal Submission Confirmation',
-      markdown: `<p>Thank you for submitting your proposal, <strong>${name}</strong>. We have received it and will review it shortly.</p>`,
+      html: `<p>Thank you for submitting your proposal, <strong>${name}</strong>. We have received it and will review it shortly.</p>`,
     };
 
     transporter.sendMail(userMailOptions, (error, info) => {
