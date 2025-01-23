@@ -7,7 +7,7 @@ import Navigation from './Components/Navigation';
 import Events from './Components/Events';
 import StudentManagement from './Components/Achievements';
 import Projects from './Components/Projects';
-import './App.css'
+import './App.css';
 import Achievements from './Components/Achievements';
 import PastProjects from './Components/PastProjects';
 import UpcomingProjects from './Components/UpcomingProjects';
@@ -15,6 +15,7 @@ import VerticalTimeline from './Components/Timeline';
 import Carousel from './Components/Carousel';
 import Hero from './Components/Hero';
 import Footer from "./Components/Footer"
+import FourOFour from './Components/FourOFour';
 
 
 const Homepage = () => {
@@ -51,6 +52,7 @@ function App() {
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/past-projects" element={<PastProjects />} />
         <Route path="/upcoming-projects" element={<UpcomingProjects />} />
+        <Route path="*" element={<FourOFour />} />
         {/* <Route path="/time" element={<VerticalTimeline />} /> */}
 
         {/* <Route path="/" element={<OrderManagement />} /> */}
