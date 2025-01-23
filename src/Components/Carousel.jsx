@@ -51,8 +51,8 @@ const Carousel = () => {
   }, [images.length]);
 
   return (
-    <div className="flex h-[80vh]">
-      <div className="w-full relative">
+    <div className="flex h-[80vh] w-[100%] justify-center p-2">
+      <div className="w-[90%] relative">
         <img
           src={images[currentIndex]}
           alt={`Slide ${currentIndex + 1}`}
