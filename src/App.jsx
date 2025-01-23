@@ -1,5 +1,5 @@
 // Enhanced App component with updated styles and layout
-import { React } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import NavbarCard from './Components/NavbarCard';
@@ -36,6 +36,8 @@ const Homepage = () => {
     </div>
   );
 };
+
+
 
 
 function App() {
