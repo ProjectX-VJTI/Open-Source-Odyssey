@@ -36,7 +36,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // List of recipient emails
-const recipientEmails = ['skshah_b23@ce.vjti.ac.in'/*,'vmshah_b22@ce.vjti.ac.in','vedantmehra20@gmail.com'*/]; // Add more emails if needed
+const recipientEmails = ['skshah_b23@ce.vjti.ac.in']; // Add more emails if needed
 
 // Handle file uploads and send email
 app.post('/api/submit-proposal', upload.single('file'), async (req, res) => {
@@ -63,7 +63,7 @@ app.post('/api/submit-proposal', upload.single('file'), async (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: 'Proposal Submission Confirmation',
-      text: `Thank you for submitting your proposal, ${name}. We have received it and will review it shortly.`,
+      markdown: `<p>Thank you for submitting your proposal, <strong>${name}</strong>. We have received it and will review it shortly.</p>`,
     };
 
     transporter.sendMail(userMailOptions, (error, info) => {
@@ -79,10 +79,11 @@ app.post('/api/submit-proposal', upload.single('file'), async (req, res) => {
       from: process.env.EMAIL_USER,
       to: recipientEmails.join(', '), // Join recipient emails with commas
       subject: `Proposal from ${name}`,
-      text: `A new proposal has been submitted by ${name} (${email}, Phone: ${phone}).`,
+      html: `<p>A new proposal has been submitted by <strong>${name}</strong> (<a href="mailto:${email}">${email}</a>, Phone: <strong>${phone}</strong>).</p>`,
       attachments: [
         {
           path: filePath,
+          filename: file.originalname, // Ensure the attachment has the original file name
         },
       ],
     };
