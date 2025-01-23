@@ -7,7 +7,7 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.5, 
+        staggerChildren: 0.3, 
         delayChildren: 0.5,
       },
     },
@@ -32,18 +32,25 @@ const Hero = () => {
       >
         <motion.h1
           variants={textVariants}
-          className="text-[10rem] leading-none font-mono tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+          className="text-[10rem] text-bounce leading-none font-mono tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
         >
           ProjectX
         </motion.h1>
 
         <motion.p
           variants={textVariants}
-          className="text-5xl leading-relaxed font-mono tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mt-5"
+          className="text-5xl text-bounce leading-relaxed font-mono tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mt-5"
         >
           Innovating the future
         </motion.p>
       </motion.div>
+      <svg
+          className="absolute bottom-0 left-0 right-0 z-10 opacity-100"
+          viewBox="0 0 1440 320"
+          style={{ clipPath: 'polygon(0 0, 100% 0, 100% 90%, 0 100%)' }}
+      >
+          <use href="src/assets/wordcloud.svg" />
+      </svg>
     </div>
   );
 };
