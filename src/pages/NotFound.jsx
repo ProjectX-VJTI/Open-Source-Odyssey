@@ -10,7 +10,7 @@ const NotFound = () => {
             <div className="absolute inset-0 bg-[radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px),radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px)] bg-[length:20px_20px]">
                 <div className="font-tech text-purple-blue text-lg text-center py-10 px-4 md:px-12 flex flex-col items-center justify-center gap-10">
                     <div className="text-5xl leading-relaxed font-mono tracking-wide text-transparent text-center bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mt-5">
-                        Oops, this page doesn't exist!{' '}
+                        Oops, this page doesn't exist!
                     </div>
                     <div>
                         <button
