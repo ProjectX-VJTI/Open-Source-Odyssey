@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/X_Logo.png';
 
-const Navigation = () => {
+const Navigation = ({ children }) => {
   return (
     <nav className="flex justify-between items-center p-4 bg-gradient-to-r bg-slate-900 border-b-2 border-gray-700">
       <div className="flex items-center">
@@ -16,6 +16,9 @@ const Navigation = () => {
         <Link to="/projects" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Projects</Link>
         <Link to="/achievements" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Achievements</Link>
         {/* <Link to="/staff" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Staff</Link> */}
+      </div>
+      <div className="flex items-center">
+        {children} {/* This will render the Search component */}
       </div>
     </nav>
   );

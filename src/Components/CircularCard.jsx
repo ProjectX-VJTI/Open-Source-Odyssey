@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
+import HighlightWrapper from './HighlightWrapper';
 
 const CircularCard = ({ image, name, organization, link }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
@@ -11,8 +12,12 @@ const CircularCard = ({ image, name, organization, link }) => {
       <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg">
         <img src={image} alt={name} className="w-full h-full object-cover" />
       </div>
-      <h3 className="mt-4 text-xl font-bold text-purple-200">{name}</h3>
-      <p className="mt-2 text-cyan-200">{organization}</p>
+      <h3 className="mt-4 text-xl font-bold text-purple-200">
+        <HighlightWrapper>{name}</HighlightWrapper>
+      </h3>
+      <p className="mt-2 text-cyan-200">
+        <HighlightWrapper>{organization}</HighlightWrapper>
+      </p>
     </animated.div>
 
     </a>
