@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/X_Logo.png';
 
+
 const Navigation = () => {
   return (
     <nav className="flex justify-between items-center p-4 bg-gradient-to-r bg-slate-900 border-b-2 border-gray-700">
@@ -22,3 +23,5 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+

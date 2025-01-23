@@ -15,7 +15,7 @@ import VerticalTimeline from './Components/Timeline';
 import Carousel from './Components/Carousel';
 import Hero from './Components/Hero';
 import Footer from "./Components/Footer"
-
+import Error404 from "./Components/Error404"
 
 const Homepage = () => {
   return (
@@ -54,6 +54,9 @@ function App() {
         {/* <Route path="/time" element={<VerticalTimeline />} /> */}
 
         {/* <Route path="/" element={<OrderManagement />} /> */}
+        
+        {/* New Routes */}
+        <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
     </Router>
