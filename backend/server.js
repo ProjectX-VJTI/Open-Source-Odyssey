@@ -36,7 +36,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // List of recipient emails
-const recipientEmails = ['skshah_b23@ce.vjti.ac.in','vmshah_b22@ce.vjti.ac.in','vedantmehra20@gmail.com']; // Add more emails if needed
+const recipientEmails = ['skshah_b23@ce.vjti.ac.in'/*,'vmshah_b22@ce.vjti.ac.in','vedantmehra20@gmail.com'*/]; // Add more emails if needed
 
 // Handle file uploads and send email
 app.post('/api/submit-proposal', upload.single('file'), async (req, res) => {
