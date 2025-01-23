@@ -7,7 +7,11 @@ import '@leenguyen/react-flip-clock-countdown/dist/index.css';
 
 class Completed extends Component {
   render() {
-    return <span className="text-white">The countdown is complete</span>;
+    return (
+      <div className="text-white text-lg font-bold mt-2">
+        The Event is Over.
+      </div>
+    );
   }
 }
 
@@ -31,29 +35,32 @@ class RenderByUsingCallback extends Component {
     return (
       <React.Fragment>
         {this.state.isCompleted ? <Completed /> : (
-          <FlipClockCountdown
-            onComplete={this.handleComplete}
-            to={this.endTime}
-            labels={['Days', 'Hours', 'Minutes', 'Seconds']}
-            labelStyle={{ fontSize: '10px', color: '#ffffff' }}
-            digitBlockStyle={{
-              width: '40px',
-              height: '60px',
-              borderRadius: '5px',
-              spacing: '5px',
-              backgroundColor: 'black',
-              digitColor: 'white',
-              fontSize: '30px',
-            }}
-            dividerStyle={{
-              height: '1px',
-              color: 'black',
-            }}
-            separatorStyle={{
-              size: '6px',
-              color: 'white',
-            }}
-          />
+          <div className="text-center">
+            <div className="font-mono text-x text-white">Event ends in:</div>
+            <FlipClockCountdown
+              onComplete={this.handleComplete}
+              to={this.endTime}
+              labels={['Days', 'Hours', 'Minutes', 'Seconds']}
+              labelStyle={{ fontSize: '10px', color: '#ffffff' }}
+              digitBlockStyle={{
+                width: '40px',
+                height: '60px',
+                borderRadius: '5px',
+                spacing: '5px',
+                backgroundColor: 'black',
+                digitColor: 'white',
+                fontSize: '30px',
+              }}
+              dividerStyle={{
+                height: '1px',
+                color: 'black',
+              }}
+              separatorStyle={{
+                size: '6px',
+                color: 'white',
+              }}
+            />
+          </div>
         )}
       </React.Fragment>
     );
