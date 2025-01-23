@@ -13,7 +13,6 @@
 .glass-effect {
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.1);
-    color:#814fde;
     border-radius: 10px;
     padding: 2rem;
   }
