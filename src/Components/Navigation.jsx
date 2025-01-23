@@ -9,7 +9,7 @@ class Completed extends Component {
   render() {
     return (
       <div className="text-white text-lg font-bold mt-2">
-        The Event is Over.
+        The Event is Over!
       </div>
     );
   }
