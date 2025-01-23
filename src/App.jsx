@@ -14,7 +14,8 @@ import UpcomingProjects from './Components/UpcomingProjects';
 import VerticalTimeline from './Components/Timeline';
 import Carousel from './Components/Carousel';
 import Hero from './Components/Hero';
-import Footer from "./Components/Footer"
+import Footer from "./Components/Footer";
+import Error404 from './Components/Error404';
 
 
 const Homepage = () => {
@@ -51,6 +52,7 @@ function App() {
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/past-projects" element={<PastProjects />} />
         <Route path="/upcoming-projects" element={<UpcomingProjects />} />
+        <Route path="*" element={<Error404 />} />
         {/* <Route path="/time" element={<VerticalTimeline />} /> */}
 
         {/* <Route path="/" element={<OrderManagement />} /> */}
