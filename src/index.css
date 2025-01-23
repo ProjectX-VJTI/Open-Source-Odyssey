@@ -53,3 +53,5 @@
   .bgC{
     background-image: repeating-linear-gradient(157deg, rgba(237,225,225, 0.05) 0px, rgba(237,225,225, 0.05) 1px,transparent 1px, transparent 11px,rgba(237,225,225, 0.05) 11px, rgba(237,225,225, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(112deg, rgba(237,225,225, 0.05) 0px, rgba(237,225,225, 0.05) 1px,transparent 1px, transparent 11px,rgba(237,225,225, 0.05) 11px, rgba(237,225,225, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(247deg, rgba(237,225,225, 0.05) 0px, rgba(237,225,225, 0.05) 1px,transparent 1px, transparent 11px,rgba(237,225,225, 0.05) 11px, rgba(237,225,225, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(202deg, rgba(237,225,225, 0.05) 0px, rgba(237,225,225, 0.05) 1px,transparent 1px, transparent 11px,rgba(237,225,225, 0.05) 11px, rgba(237,225,225, 0.05) 12px,transparent 12px, transparent 32px),linear-gradient(202deg, rgb(1, 9, 29),rgb(7, 14, 49));
   }
+
+  

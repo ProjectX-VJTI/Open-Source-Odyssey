@@ -19,10 +19,10 @@ import Footer from "./Components/Footer"
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="bg-light-gradient dark:bg-dark-gradient">
       <Hero />
        {/* Text Section between Hero and Carousel */}
-      <div className="text-center py-8 px-4 md:px-12 bg-opacity-10 text-white">
+      <div className=" text-center py-8 px-4 md:px-12 bg-opacity-10 text-gray-800 dark:text-white">
         <h2 className="text-4xl font-semibold mb-4">Welcome to Project X</h2>
         <p className="text-xl">
           We are an exclusive club at Veermata Jijabai Technological Institute, Mumbai. We provide a collaborative environment for students to learn, grow, and build projects together under mentorship. Explore our achievements, past projects, and upcoming events!

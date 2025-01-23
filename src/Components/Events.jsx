@@ -3,6 +3,7 @@ import { Chrono } from "react-chrono";
 import '../App.css'
 
 const Events = () => {
+  const darkMode = localStorage.getItem('theme') === 'dark';
   const items = [
     {
       title: "March 19 2024",
@@ -67,25 +68,29 @@ const Events = () => {
   ];
 
   return (
-    <div className="relative h-[91.1vh] w-full ">
+    <div className="bg-light-gradient dark:bg-dark-gradient relative h-[91.1vh] w-full ">
       <div className="absolute inset-0 bg-[radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px),radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px)] bg-[length:20px_20px]">
         <div style={{ width: "100%", height: "90vh", padding: "2rem" }}>
-          <Chrono
+
+          {darkMode ? <Chrono
             items={items}
             mode="VERTICAL_ALTERNATING"
             disableToolbar={true}
-            theme={{
-              primary: "#fff",
-              secondary: "#e2e8f0",
-              cardBgColor: "rgba(30, 41, 59, 0.8)",
-              cardDetailsColor: "#e2e8f0",
-              cardSubtitleColor: "#a0aec0",
-              cardForeColor: "#fff",
-              titleColor: "#fff",
-              lineColor: "#4a5568",
-              cardText: "#e2e8f0",
-              dotColor: "#0b228c"
-            }}
+            theme={
+
+              {
+                primary: "#fff",
+                secondary: "#e2e8f0",
+                cardBgColor: "rgba(30, 41, 59, 1)",
+                cardDetailsColor: "#e2e8f0",
+                cardSubtitleColor: "#a0aec0",
+                cardForeColor: "#fff",
+                titleColor: "#fff",
+                lineColor: "#4a5568",
+                cardText: "#e2e8f0",
+                dotColor: "#0b228c",
+              }
+            }
             className={{
               card: "rounded-lg shadow-lg",
               cardMedia: "rounded-t-lg",
@@ -94,8 +99,43 @@ const Events = () => {
               controls: "my-controls",
               title: "text-2xl font-bold mb-4",
             }}
-            cardHeight={180}
+            cardHeight={180
+            }
           />
+            : <Chrono
+              items={items}
+              mode="VERTICAL_ALTERNATING"
+              disableToolbar={true}
+              theme={
+
+                {
+                  primary: "#0b228c",
+                  secondary: "#cbd5e1",
+                  cardBgColor: "#ffffff",
+                  cardDetailsColor: "#1a202c",
+                  cardSubtitleColor: "#4a5568",
+                  cardForeColor: "#000",
+                  titleColor: "#000",
+                  lineColor: "#0b228c",
+                  cardText: "#1a202c",
+                  dotColor: "#0b228c",
+                }
+              }
+              className={{
+                card: "rounded-lg shadow-lg",
+                cardMedia: "rounded-t-lg",
+                cardSubTitle: "text-sm font-medium",
+                cardTitle: "text-lg font-bold",
+                controls: "my-controls",
+                title: "text-2xl font-bold mb-4",
+              }}
+              cardHeight={180
+              }
+            />
+          }
+
+
+
         </div>
       </div>
     </div>
@@ -103,3 +143,5 @@ const Events = () => {
 }
 
 export default Events;
+
+
