@@ -1,12 +1,32 @@
 import React from 'react';
 import FeatureCard from './FeatureCard'; // Assuming FeatureCard is in the same directory
+import { easeInOut, motion } from "framer-motion"
 
 const PastProjects = () => {
+
+  const headingVariants = {
+    hidden: { opacity: 0, y: -30, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 3,
+        type: "spring",
+        damping: 15,
+      },
+    },
+  };
+
   return (
     <div className="relative h-[175vh] pb-2 w-full bg-slate-900">
     <div className="absolute inset-0 bgC">
     <div className="text-center overflow-y-auto mt-5">
-      <h1 className="text-5xl font-bold text-transparent my-6 py-4 bg-clip-text bg-gradient-to-r from-purple-500 via-blue-500 to-purple-600 mb-10">Past Projects</h1>
+      <motion.h1 
+        initial="hidden"
+        animate="visible"
+        variants={headingVariants} 
+        className="text-5xl font-bold text-transparent my-6 py-4 bg-clip-text bg-gradient-to-r from-purple-500 via-blue-500 to-purple-600 mb-10">Past Projects</motion.h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FeatureCard
           title="Transformer From Scratch"

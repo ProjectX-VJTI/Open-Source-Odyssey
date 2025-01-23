@@ -30,18 +30,13 @@ const textVariants = {
 
 const CardRow = () => {
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={cardVariants}
-      className="relative h-[91.5vh] w-full bg-transparent"
-    >
+    <motion.div className="relative h-[91.5vh] w-full bg-transparent" >
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
         <div className="flex flex-row w-full h-[90vh] items-stretch">
-          <motion.div className="w-1/2 m-6 flex justify-center items-center p-4">
+          <motion.div  initial="hidden" animate="visible" variants={cardVariants} className="w-1/2 m-6 flex justify-center items-center p-4">
             <Card title="Upcoming Project 2k24" link="/upcoming-projects" />
           </motion.div>
-          <motion.div className="w-1/2 m-6 flex justify-center items-center p-4">
+          <motion.div  initial="hidden" animate="visible" variants={cardVariants} className="w-1/2 m-6 flex justify-center items-center p-4">
             <Card title="Past Projects" link="/past-projects" />
           </motion.div>
         </div>
@@ -52,7 +47,7 @@ const CardRow = () => {
 
 const Card = ({ title, link }) => {
   return (
-      <motion.div
+    <motion.div
       variants={cardVariants}
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
