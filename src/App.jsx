@@ -15,13 +15,15 @@ import VerticalTimeline from './Components/Timeline';
 import Carousel from './Components/Carousel';
 import Hero from './Components/Hero';
 import Footer from "./Components/Footer"
+ import LeaderboardComponent from './Components/LeaderboardComponent';
+ import AchievementsPage from './Components/Achievements';
+
 
 
 const Homepage = () => {
   return (
     <div>
       <Hero />
-       {/* Text Section between Hero and Carousel */}
       <div className="text-center py-8 px-4 md:px-12 bg-opacity-10 text-white">
         <h2 className="text-4xl font-semibold mb-4">Welcome to Project X</h2>
         <p className="text-xl">
@@ -32,6 +34,7 @@ const Homepage = () => {
       <div>
         <Carousel />
       </div>
+    
     </div>
   );
 };
@@ -52,6 +55,7 @@ function App() {
         <Route path="/past-projects" element={<PastProjects />} />
         <Route path="/upcoming-projects" element={<UpcomingProjects />} />
         {/* <Route path="/time" element={<VerticalTimeline />} /> */}
+        <Route path="/LeaderboardComponent" element={<LeaderboardComponent/>} />
 
         {/* <Route path="/" element={<OrderManagement />} /> */}
       </Routes>
