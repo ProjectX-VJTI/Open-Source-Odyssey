@@ -17,17 +17,17 @@ const FeatureCard = ({
   };
 
   return (
-    <div className={` w-10/12 mx-auto border-2  backdrop-blur-sm shadow-gradient border-gray-700 p-3 flex flex-col bg-clip-border rounded-xl shadow-md`}>
+    <div className={`bg-light-gradient dark:bg-dark-gradient w-10/12 mx-auto border-2  backdrop-blur-sm shadow-gradient border-gray-700 p-3 flex flex-col bg-clip-border rounded-xl shadow-md`}>
       <div className="w-full mb-3">
       <h3 className={`aanimate-bounce-less text-3xl font-semibold ${tagStyle} bg-clip-text text-transparent bg-gradient-to-br from-blue-400 to-purple-400 duration-1000 ease-in-out`}>
       {title}
     </h3>
     </div>
       <div className="mb-1">
-        <p className={`text-[0.8rem] text-gray-100 ${tagStyle}`}>{tag}</p>
+        <p className={`text-[0.8rem] text-gray-900 dark:text-gray-100 ${tagStyle}`}>{tag}</p>
       </div>
       <div className="mb-[4rem] md:h-[100px]">
-        <p className="text-[1.1rem] text-gray-300">{info}</p>
+        <p className="text-[1.1rem] text-gray-800 dark:text-gray-300">{info}</p>
       </div>
       <div className="">
         <button

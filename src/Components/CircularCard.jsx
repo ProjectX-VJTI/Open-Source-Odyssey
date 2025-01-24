@@ -11,8 +11,8 @@ const CircularCard = ({ image, name, organization, link }) => {
       <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg">
         <img src={image} alt={name} className="w-full h-full object-cover" />
       </div>
-      <h3 className="mt-4 text-xl font-bold text-purple-200">{name}</h3>
-      <p className="mt-2 text-cyan-200">{organization}</p>
+      <h3 className="mt-4 text-xl font-bold dark:text-purple-200 text-purple-400">{name}</h3>
+      <p className="mt-2 dark:text-cyan-200 text-cyan-800">{organization}</p>
     </animated.div>
 
     </a>
