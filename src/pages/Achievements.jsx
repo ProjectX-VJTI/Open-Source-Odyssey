@@ -1,5 +1,5 @@
 import React from 'react';
-import CircularCard from './CircularCard';
+import CircularCard from '../components/CircularCard';
 
 const Achievements = () => {
   return (
