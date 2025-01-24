@@ -14,6 +14,8 @@
     "framer-motion": "^11.1.7",
     "gsap": "^3.12.5",
     "lil-gui": "^0.19.2",
+    "lottie-react": "^2.4.1",
+    "lucide-react": "^0.474.0",
     "react": "^18.2.0",
     "react-chrono": "^2.6.1",
     "react-d3-cloud": "^1.0.6",
