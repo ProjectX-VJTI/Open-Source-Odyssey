@@ -22,7 +22,8 @@ const VerticalTimeline = () => {
 					item.classList.add("show");
 				}
 			});
-
+		 // Initial check on load
+    run();
 		// Events
 		window.addEventListener("load", run);
 		window.addEventListener("resize", run);
@@ -34,8 +35,7 @@ const VerticalTimeline = () => {
 			window.removeEventListener("scroll", run);
 		};
 	}, []);
-
-	return (
+    return (
 		<div>
 			<div className="relative h-[91.1vh] w-full bg-gradient-to-r from-slate-900 to-gray-800">
 				<div className="absolute inset-0 bg-[radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px),radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px)] bg-[length:20px_20px]">
@@ -47,6 +47,7 @@ const VerticalTimeline = () => {
 					<section id="timeline">
 						<ul>
 							<h3>2015</h3>
+							
 							<li>
 								<div>
 									<div>
@@ -59,6 +60,7 @@ const VerticalTimeline = () => {
 								</div>
 							</li>
 							<h3>2016</h3>
+							
 							<li>
 								<div>
 									<div>
@@ -71,6 +73,7 @@ const VerticalTimeline = () => {
 								</div>
 							</li>
 							<h3>2017</h3>
+							
 							<li>
 								<div>
 									<div>
@@ -84,6 +87,7 @@ const VerticalTimeline = () => {
 								</div>
 							</li>
 							<h3>2018</h3>
+							
 							<li>
 								<div>
 									<div>
@@ -96,6 +100,7 @@ const VerticalTimeline = () => {
 								</div>
 							</li>
 							<h3>2019</h3>
+							
 							<li>
 								<div>
 									<div>
@@ -108,7 +113,8 @@ const VerticalTimeline = () => {
 								</div>
 							</li>
 							<h3>2020</h3>
-							<li>
+							
+								<li>
 								<div>
 									<div>
 										<h2>Title Six</h2>
