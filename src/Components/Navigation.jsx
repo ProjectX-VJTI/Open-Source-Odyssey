@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/X_Logo.png';
+import Countdown from './Coutdown';
 
 const Navigation = () => {
   return (
@@ -10,7 +11,7 @@ const Navigation = () => {
         <img src={logo} alt="Logo" className="h-12 w-12 mr-3 rounded-full" />
         <span className="text-3xl font-mono font-bold text-white shadow-md">ProjectX</span>
       </div>
-      <div className="flex font-mono space-x-6">
+      <div className="flex font-mono space-x-6 justify-center items-center">
         <Link to="/" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Home</Link>
         <Link to="/events" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Events</Link>
         <Link to="/projects" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Projects</Link>

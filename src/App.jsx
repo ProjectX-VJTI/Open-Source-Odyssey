@@ -8,6 +8,7 @@ import Events from './Components/Events';
 import StudentManagement from './Components/Achievements';
 import Projects from './Components/Projects';
 import './App.css'
+import Countdown from './Components/Coutdown';
 import Achievements from './Components/Achievements';
 import PastProjects from './Components/PastProjects';
 import UpcomingProjects from './Components/UpcomingProjects';
