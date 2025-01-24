@@ -15,6 +15,7 @@ import VerticalTimeline from './Components/Timeline';
 import Carousel from './Components/Carousel';
 import Hero from './Components/Hero';
 import Footer from "./Components/Footer"
+import PageNotFound from './Components/PageNotFound'
 
 
 const Homepage = () => {
@@ -52,7 +53,7 @@ function App() {
         <Route path="/past-projects" element={<PastProjects />} />
         <Route path="/upcoming-projects" element={<UpcomingProjects />} />
         {/* <Route path="/time" element={<VerticalTimeline />} /> */}
-
+        <Route path = '*' element = {<PageNotFound/>}/>
         {/* <Route path="/" element={<OrderManagement />} /> */}
       </Routes>
       <Footer />
