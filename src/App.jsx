@@ -7,7 +7,6 @@ import Navigation from './Components/Navigation';
 import Events from './Components/Events';
 import StudentManagement from './Components/Achievements';
 import Projects from './Components/Projects';
-import './App.css'
 import Achievements from './Components/Achievements';
 import PastProjects from './Components/PastProjects';
 import UpcomingProjects from './Components/UpcomingProjects';
@@ -15,7 +14,7 @@ import VerticalTimeline from './Components/Timeline';
 import Carousel from './Components/Carousel';
 import Hero from './Components/Hero';
 import Footer from "./Components/Footer"
-
+import ProposalPage from './Components/ProposalPage';
 
 const Homepage = () => {
   return (
@@ -42,23 +41,22 @@ const Homepage = () => {
 function App() {
   return (
     <div className='bgC'>
-    <Router>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/achievements" element={<Achievements />} />
-        <Route path="/past-projects" element={<PastProjects />} />
-        <Route path="/upcoming-projects" element={<UpcomingProjects />} />
-        {/* <Route path="/time" element={<VerticalTimeline />} /> */}
+      <Router>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/past-projects" element={<PastProjects />} />
+          <Route path="/upcoming-projects" element={<UpcomingProjects />} />
+          <Route path="/proposal" element={<ProposalPage />} />
+          {/* <Route path="/time" element={<VerticalTimeline />} /> */}
 
-        {/* <Route path="/" element={<OrderManagement />} /> */}
-      </Routes>
-      <Footer />
-    </Router>
-    <div>
-    </div>
+          {/* <Route path="/" element={<OrderManagement />} /> */}
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 }
