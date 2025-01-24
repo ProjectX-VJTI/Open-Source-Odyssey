@@ -1,7 +1,7 @@
 import React from "react";
 import { Chrono } from "react-chrono";
 import '../App.css'
-
+import SlideUpPageWrapper from "./fadeSlideup";
 const Events = () => {
   const items = [
     {
@@ -66,9 +66,11 @@ const Events = () => {
     }
   ];
 
+
   return (
     <div className="relative h-[91.1vh] w-full ">
       <div className="absolute inset-0 bg-[radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px),radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px)] bg-[length:20px_20px]">
+        <SlideUpPageWrapper>
         <div style={{ width: "100%", height: "90vh", padding: "2rem" }}>
           <Chrono
             items={items}
@@ -96,7 +98,7 @@ const Events = () => {
             }}
             cardHeight={180}
           />
-        </div>
+        </div></SlideUpPageWrapper>
       </div>
     </div>
   )

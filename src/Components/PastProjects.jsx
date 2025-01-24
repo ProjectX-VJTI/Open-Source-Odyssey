@@ -1,12 +1,15 @@
 import React from 'react';
 import FeatureCard from './FeatureCard'; // Assuming FeatureCard is in the same directory
-
+import SlideUpPageWrapper from './fadeSlideup';
+import SlideRotatePageWrapper from './slideinleftRotate';
 const PastProjects = () => {
   return (
+    
     <div className="relative h-[175vh] pb-2 w-full bg-slate-900">
     <div className="absolute inset-0 bgC">
     <div className="text-center overflow-y-auto mt-5">
-      <h1 className="text-5xl font-bold text-transparent my-6 py-4 bg-clip-text bg-gradient-to-r from-purple-500 via-blue-500 to-purple-600 mb-10">Past Projects</h1>
+      <SlideRotatePageWrapper><h1 className="text-5xl font-bold text-transparent my-6 py-4 bg-clip-text bg-gradient-to-r from-purple-500 via-blue-500 to-purple-600 mb-10">Past Projects</h1></SlideRotatePageWrapper>
+      <SlideUpPageWrapper>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FeatureCard
           title="Transformer From Scratch"
@@ -81,6 +84,8 @@ const PastProjects = () => {
             page="https://github.com/extint/Semantic_Segmentation"
         />
         </div>
+        
+        
 
         {/* <FeatureCard
           title="Project Title 10"
@@ -91,10 +96,11 @@ const PastProjects = () => {
           tagStyle="gradient-text"
           page="/project-details-10"
         /> */}
-      </div>
+      </div></SlideUpPageWrapper>
     </div>
     </div>
     </div>
+    
   );
 };
 

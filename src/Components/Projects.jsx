@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import SlideRotatePageWrapper from './slideinleftRotate';
 const CardRow = () => {
   return (
+    <SlideRotatePageWrapper>
     <div className="relative h-[91.5vh] w-full bg-transparent">
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
 
@@ -16,6 +17,7 @@ const CardRow = () => {
     </div>
     </div>
     </div>
+    </SlideRotatePageWrapper>
   );
 };
 

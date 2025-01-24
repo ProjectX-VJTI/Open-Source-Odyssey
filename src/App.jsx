@@ -15,10 +15,10 @@ import VerticalTimeline from './Components/Timeline';
 import Carousel from './Components/Carousel';
 import Hero from './Components/Hero';
 import Footer from "./Components/Footer"
-
-
+import SlideBottomPageWrapper from './Components/slidebottom';
 const Homepage = () => {
   return (
+    <SlideBottomPageWrapper>
     <div>
       <Hero />
        {/* Text Section between Hero and Carousel */}
@@ -33,6 +33,7 @@ const Homepage = () => {
         <Carousel />
       </div>
     </div>
+    </SlideBottomPageWrapper>
   );
 };
 
