@@ -1,14 +1,15 @@
 import React from "react";
 import { Chrono } from "react-chrono";
+import HighlightWrapper from './HighlightWrapper';
 import '../App.css'
 
 const Events = () => {
   const items = [
     {
-      title: "March 19 2024",
-      cardTitle: "Open Source Introduction",
+      title: <HighlightWrapper>March 19 2024</HighlightWrapper>,
+      cardTitle: <HighlightWrapper>Open Source Introduction</HighlightWrapper>,
       // cardSubtitle: "Men of the British Expeditionary Force (BEF) wade out to...",
-      cardDetailedText: "Open source software is software with source code that anyone can inspect, modify, and enhance",
+      cardDetailedText: <HighlightWrapper>Open source software is software with source code that anyone can inspect, modify, and enhance</HighlightWrapper>,
       media: {
         type: "IMAGE",
         source: {
@@ -17,10 +18,10 @@ const Events = () => {
       }
     },
     {
-      title: "April 24 2024",
-      cardTitle: "OpenCV Workshop",
+      title: <HighlightWrapper>April 24 2024</HighlightWrapper>,
+      cardTitle: <HighlightWrapper>OpenCV Workshop</HighlightWrapper>,
       // cardSubtitle: "OpenCV is a library of programming functions mainly for real-time computer vision..",
-      cardDetailedText: "OpenCV is a library of programming functions mainly for real-time computer vision",
+      cardDetailedText: <HighlightWrapper>OpenCV is a library of programming functions mainly for real-time computer vision</HighlightWrapper>,
       media: {
         type: "IMAGE",
         source: {
@@ -29,10 +30,10 @@ const Events = () => {
       }
     },
     {
-      title: "June - July 2024",
-      cardTitle: "Selection Phase for batch of 2027",
+      title: <HighlightWrapper>June - July 2024</HighlightWrapper>,
+      cardTitle: <HighlightWrapper>Selection Phase for batch of 2027</HighlightWrapper>,
       // cardSubtitle: "A surprise military strike by the Imperial Japanese Navy Air Service...",
-      cardDetailedText: "An exhuastive process involving tasks, proposal preparations and interviews was carried out to shortlists sys for the mentorship program.",
+      cardDetailedText: <HighlightWrapper>An exhuastive process involving tasks, proposal preparations and interviews was carried out to shortlists sys for the mentorship program.</HighlightWrapper>,
       media: {
         type: "IMAGE",
         source: {
@@ -41,10 +42,10 @@ const Events = () => {
       }
     },
     {
-      title: "July - October",
-      cardTitle: "Weekly Meets and project development phase",
+      title: <HighlightWrapper>July - October</HighlightWrapper>,
+      cardTitle: <HighlightWrapper>Weekly Meets and project development phase</HighlightWrapper>,
       // cardSubtitle: "Men of the British Expeditionary Force (BEF) wade out to...",
-      cardDetailedText: "Sys developed their respective projects under the mentorship of Tys which was continuosly monitored by Lys via weekly presentations.",
+      cardDetailedText: <HighlightWrapper>Sys developed their respective projects under the mentorship of Tys which was continuosly monitored by Lys via weekly presentations.</HighlightWrapper>,
       media: {
         type: "IMAGE",
         source: {
@@ -53,10 +54,10 @@ const Events = () => {
       }
     },
     {
-      title: "October 19 2024",
-      cardTitle: "Final Presentation",
+      title: <HighlightWrapper>October 19 2024</HighlightWrapper>,
+      cardTitle: <HighlightWrapper>Final Presentation</HighlightWrapper>,
       // cardSubtitle: "Men of the British Expeditionary Force (BEF) wade out to...",
-      cardDetailedText: "The project development phase was wrapped up , here the Sys presented their work and answered the questions posed to them.",
+      cardDetailedText: <HighlightWrapper>The project development phase was wrapped up , here the Sys presented their work and answered the questions posed to them.</HighlightWrapper>,
       media: {
         type: "IMAGE",
         source: {

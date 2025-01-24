@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import HighlightWrapper from './HighlightWrapper';
 
 const Typewriter = ({ texts, delay = 100 }) => {
   const [textIndex, setTextIndex] = useState(0);
@@ -29,7 +30,11 @@ const Typewriter = ({ texts, delay = 100 }) => {
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, typingSpeed, textIndex, texts, delay]);
 
-  return <div className="text-white text-3xl">{displayText}</div>;
+  return (
+    <div className="text-white text-3xl">
+      <HighlightWrapper>{displayText}</HighlightWrapper>
+    </div>
+  );
 };
 
 const Carousel = () => {

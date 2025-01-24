@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import HighlightWrapper from './HighlightWrapper';
 import '../App.css'
 
 const FeatureCard = ({
@@ -20,14 +21,18 @@ const FeatureCard = ({
     <div className={` w-10/12 mx-auto border-2  backdrop-blur-sm shadow-gradient border-gray-700 p-3 flex flex-col bg-clip-border rounded-xl shadow-md`}>
       <div className="w-full mb-3">
       <h3 className={`aanimate-bounce-less text-3xl font-semibold ${tagStyle} bg-clip-text text-transparent bg-gradient-to-br from-blue-400 to-purple-400 duration-1000 ease-in-out`}>
-      {title}
-    </h3>
+        <HighlightWrapper>{title}</HighlightWrapper>
+      </h3>
     </div>
       <div className="mb-1">
-        <p className={`text-[0.8rem] text-gray-100 ${tagStyle}`}>{tag}</p>
+        <p className={`text-[0.8rem] text-gray-100 ${tagStyle}`}>
+          <HighlightWrapper>{tag}</HighlightWrapper>
+        </p>
       </div>
       <div className="mb-[4rem] md:h-[100px]">
-        <p className="text-[1.1rem] text-gray-300">{info}</p>
+        <p className="text-[1.1rem] text-gray-300">
+          <HighlightWrapper>{info}</HighlightWrapper>
+        </p>
       </div>
       <div className="">
         <button
@@ -35,7 +40,7 @@ const FeatureCard = ({
           onClick={handleButtonClick}
         >
           <span className="relative text-white px-3 py-2.5 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
-            {buttontext}
+            <HighlightWrapper>{buttontext}</HighlightWrapper>
           </span>
         </button>
       </div>

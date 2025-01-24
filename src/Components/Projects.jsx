@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import HighlightWrapper from './HighlightWrapper';
 
 const CardRow = () => {
   return (
@@ -25,16 +26,18 @@ const Card = ({ title, link }) => {
     <div className="rounded-lg  backdrop-blur-sm overflow-hidden w-full h-full flex flex-col justify-between transform hover:scale-105 transition duration-500 ease-in-out shadow-gradient border border-gray-700">
       <div className="bg-glass p-5">
         <div className="animate-bounce">
-          <h5 className=" text-center my-8 font-bold text-3xl font-mono tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-300 via-blue-400 to-purple-300">{title}</h5>
+          <h5 className=" text-center my-8 font-bold text-3xl font-mono tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-300 via-blue-400 to-purple-300">
+            <HighlightWrapper>{title}</HighlightWrapper>
+          </h5>
         </div>
         <p className="text-gray-300 pt-3 font-mono">
-
-          Press on The Read More Button to know more!!! 
-
+          <HighlightWrapper>
+            Press on The Read More Button to know more!!!
+          </HighlightWrapper>
         </p>
       </div>
       <Link to={link} className="block text-center text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-b-lg text-sm px-5 py-3">
-        Read more
+        <HighlightWrapper>Read more</HighlightWrapper>
       </Link>
     </div>
   );

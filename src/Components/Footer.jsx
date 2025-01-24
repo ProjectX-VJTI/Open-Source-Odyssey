@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaInstagram, FaGithub, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import HighlightWrapper from './HighlightWrapper';
 
 const Footer = () => {
   return (
@@ -17,7 +18,11 @@ const Footer = () => {
             <FaEnvelope size={24} />
           </a>
         </div>
-        <p className="text-sm">&copy; {new Date().getFullYear()} ProjectX</p>
+        <p className="text-sm">
+          <HighlightWrapper>
+            &copy; {new Date().getFullYear()} ProjectX
+          </HighlightWrapper>
+        </p>
       </div>
     </footer>
   );

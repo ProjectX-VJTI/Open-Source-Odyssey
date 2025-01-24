@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import HighlightWrapper from './HighlightWrapper';
 import './timeline.css';
 
 const VerticalTimeline = () => {
@@ -41,20 +42,22 @@ const VerticalTimeline = () => {
 				<div className="absolute inset-0 bg-[radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px),radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px)] bg-[length:20px_20px]">
 					<header className="main-header">
 						<div className="down-arrow"></div>
-						<h3><i className="far fa-user"></i> Name Surname / Company Name</h3>
-						<h1>VERTICAL TIMELINE</h1>
+						<h3><i className="far fa-user"></i> <HighlightWrapper>Name Surname / Company Name</HighlightWrapper></h3>
+						<h1><HighlightWrapper>VERTICAL TIMELINE</HighlightWrapper></h1>
 					</header>
 					<section id="timeline">
 						<ul>
-							<h3>2015</h3>
+							<h3><HighlightWrapper>2015</HighlightWrapper></h3>
 							<li>
 								<div>
 									<div>
-										<h2>Title One</h2>
+										<h2><HighlightWrapper>Title One</HighlightWrapper></h2>
 									</div>
 									<p>
-										Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab fugit
-										libero dolor rerum repellat tenetur enim impedit?
+										<HighlightWrapper>
+											Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab fugit
+											libero dolor rerum repellat tenetur enim impedit?
+										</HighlightWrapper>
 									</p>
 								</div>
 							</li>
