@@ -14,7 +14,11 @@ import UpcomingProjects from './Components/UpcomingProjects';
 import VerticalTimeline from './Components/Timeline';
 import Carousel from './Components/Carousel';
 import Hero from './Components/Hero';
-import Footer from "./Components/Footer"
+import Footer from "./Components/Footer";
+import AdminApproval from './Components/AdminApproval';
+import { AchievementProvider } from './Components/AchievementContext';
+import { ToastContainer } from 'react-toastify'; // Import ToastContainer
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Homepage = () => {
@@ -22,7 +26,7 @@ const Homepage = () => {
     <div>
       <Hero />
        {/* Text Section between Hero and Carousel */}
-      <div className="text-center py-8 px-4 md:px-12 bg-opacity-10 text-white">
+      <div className="text-center py-8 px-4 md:px-12 bg-opacity-10 text-white ">
         <h2 className="text-4xl font-semibold mb-4">Welcome to Project X</h2>
         <p className="text-xl">
           We are an exclusive club at Veermata Jijabai Technological Institute, Mumbai. We provide a collaborative environment for students to learn, grow, and build projects together under mentorship. Explore our achievements, past projects, and upcoming events!
@@ -42,6 +46,7 @@ const Homepage = () => {
 function App() {
   return (
     <div className='bgC'>
+        <AchievementProvider>
     <Router>
       <Navigation />
       <Routes>
@@ -49,14 +54,19 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/achievements" element={<Achievements />} />
+        <Route path="/admin" element={<AdminApproval />} />
         <Route path="/past-projects" element={<PastProjects />} />
         <Route path="/upcoming-projects" element={<UpcomingProjects />} />
+       
+
         {/* <Route path="/time" element={<VerticalTimeline />} /> */}
 
         {/* <Route path="/" element={<OrderManagement />} /> */}
       </Routes>
       <Footer />
+      <ToastContainer /> 
     </Router>
+    </AchievementProvider>
     <div>
     </div>
     </div>

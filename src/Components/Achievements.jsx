@@ -1,31 +1,123 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { AchievementContext } from './AchievementContext';
+import AchievementForm from './AchievementForm';
+import AdminApproval from './AdminApproval';
 import CircularCard from './CircularCard';
+import { FaPlus, FaUserCog } from 'react-icons/fa';
 
 const Achievements = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('GSOC');
+  const { approvedAchievements } = useContext(AchievementContext); // Access approvedAchievements
+
+  const sections = ['GSOC', 'Hackathons', 'Competitions', 'Miscellaneous'];
+
+  const handleSectionClick = (section) => {
+    setSelectedCategory(section);
+  };
+
+  const handleAddAchievementClick = () => {
+    setIsFormOpen(true);
+  };
+
+  const handleFormClose = () => {
+    setIsFormOpen(false);
+  };
+
+  const handleAdminButtonClick = () => {
+    setIsAdminModalOpen(true);
+  };
+
+  const handleAdminModalClose = () => {
+    setIsAdminModalOpen(false);
+  };
+
+  // Filter approved achievements by the selected category
+  const filteredAchievements = selectedCategory
+    ? approvedAchievements.filter(
+        (achievement) => achievement.category === selectedCategory
+      )
+    : [];
+
   return (
-    <div className='min-h-screen'>
-      <h1 className="text-center mx-auto text-5xl font-mono py-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-300 to-red-300">
-        GSoC Contributors
-      </h1>
-      <div className="grid grid-cols-6 px-3 gap-12 justify-center">
-        <div></div>
-        <CircularCard image='https://i.ibb.co/jJyjcvZ/Kshitij-Shah-photoaidcom-cropped.png' name='Kshitij Shah' organization='Sugarlabs' link="https://github.com/kshitijdshah99/Pippy_Activity" />
-        <CircularCard image='https://i.ibb.co/Z6fgX5F/IMG-20231110-003535-01-01-photoaidcom-cropped.png' name='Vedant Mehra' organization='CERN' link="https://hepsoftwarefoundation.org/gsoc/blogs/2024/blog_SOFIE_VedantMehra.html" />
-        <CircularCard image='https://i.ibb.co/Sm9FtJ2/1714656497995-photoaidcom-cropped.png' name='Mayank Palan' organization='Red Hen Lab' link="https://medium.com/@mayankpalan066/gsoc24-with-red-hen-lab-modeling-wayfinding-cfb0131b71d1" />
-        <CircularCard image='https://i.ibb.co/C640S72/Scanned-20240502-1627-1-page-0001-photoaidcom-cropped.png' name='Sharan Poojari' organization='NumFOCUS' link="https://github.com/aiidateam/aiida-explorer/blob/gsoc/gsoc/README.md" />
-        <div></div>
-      </div>
-        <div className="grid grid-cols-7 px-6 justify-center gap-12">
-<div></div>
-<div></div>
-          <CircularCard image='https://i.ibb.co/T4D9vMh/IMG-20240502-172654-photoaidcom-cropped.png' name='Warren Jacinto' organization='Open Astronomy' link="https://deadspheroid.github.io/my-blog/" />
-          <CircularCard image='https://i.ibb.co/t3vy9D9/IMG-20240502-WA0043-2-photoaidcom-cropped.png' name='Tvisha Vedant' organization='INCF' link="https://tvilight4.github.io/MyBlog/" />
-          <CircularCard image='https://i.ibb.co/9WSz3ss/photo-photoaidcom-cropped.png' name='Raya Chakravarthy' organization='INCF' link="https://raya679.github.io/gsoc/" />
-          <div></div>
-          <div></div>
+    <div className="min-h-screen flex flex-col items-center justify-start pt-12 relative">
+      {/* Add your achievement button */}
+      <div className="absolute top-4 left-4 group">
+        <button
+          onClick={handleAddAchievementClick}
+          className="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 ease-in-out"
+        >
+          <FaPlus className="text-white text-2xl" />
+        </button>
+        <div className="absolute top-14 left-0 bg-black text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          Add your achievement
         </div>
+      </div>
+
+      {/* Admin button */}
+      <div className="absolute top-4 right-4 group">
+        <button
+          onClick={handleAdminButtonClick}
+          className="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 ease-in-out"
+        >
+          <FaUserCog className="text-white text-2xl" />
+        </button>
+        <div className="absolute top-14 right-0 bg-black text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          Admin Approval
+        </div>
+      </div>
+
+      <h1 className="text-center mx-auto text-5xl font-mono py-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-300 to-red-300">
+        Achievements
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-64 px-6 justify-items-center w-full max-w-6xl">
+        {sections.map((section) => (
+          <div
+            key={section}
+            onClick={() => handleSectionClick(section)}
+            className={`flex text-center font-mono flex-col items-center p-4 shadow-[0_4px_14px_0_rgba(96,165,250,0.5)] w-72 bg-transparent rounded-lg transform hover:scale-105 transition-transform duration-200 ease-in-out cursor-pointer ${
+              selectedCategory === section
+                ? 'border-2 border-purple-400'
+                : 'border-2 border-transparent'
+            }`}
+          >
+            <h3 className="text-2xl font-bold text-purple-200">{section}</h3>
+          </div>
+        ))}
+      </div>
+
+      {/* Display filtered achievements */}
+      {selectedCategory && (
+        <div className="mt-12 w-full max-w-6xl">
+          <h2 className="text-3xl font-bold text-purple-200 mb-6 text-center">
+            {selectedCategory} Achievers
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 px-6 justify-items-center">
+            {filteredAchievements.length > 0 ? (
+              filteredAchievements.map((achievement, index) => (
+                <CircularCard
+                  key={index}
+                  image={achievement.image}
+                  name={achievement.name}
+                  organization={achievement.achievementDetails}
+                  link={achievement.link || '#'}
+                />
+              ))
+            ) : (
+              <p className="text-purple-200">No achievers found for this category.</p>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Achievement form */}
+      {isFormOpen && <AchievementForm onClose={handleFormClose} />}
+
+      {/* Admin approval modal */}
+      {isAdminModalOpen && <AdminApproval onClose={handleAdminModalClose} />}
     </div>
   );
-}
+};
 
 export default Achievements;
