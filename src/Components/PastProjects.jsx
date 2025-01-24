@@ -1,11 +1,11 @@
 import React from 'react';
-import FeatureCard from './FeatureCard'; // Assuming FeatureCard is in the same directory
+import FeatureCard from './FeatureCard'; 
 import myHook from "./Context"
 const PastProjects = () => {
   const {siteMode} = myHook()
   return (
     <div className={`relative h-[100vh] overflow-y-scroll pb-2 w-full bg-slate-900 ${siteMode === "dark" ? "bgC" : "bgC-light"}`}>
-    {/* <div className=" "> */}
+  
     <div className="text-center mt-5 py-2">
       <h1 className="text-5xl font-bold text-transparent my-6 py-4 bg-clip-text bg-gradient-to-r from-purple-500 via-blue-500 to-purple-600 mb-10">Past Projects</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -18,6 +18,8 @@ import Footer from "./Components/Footer";
 import Error404 from "./Components/Error404";
 import { ContextProvider } from "./Components/Context";
 import myHook from "./Components/Context";
+import AlumniPage from "./Components/Alumni/AlumniPage"
+import AdminDash from "./Components/Alumni/AdminDash";
 const Homepage = () => {
   const { siteMode } = myHook();
   console.log("Homepage siteMode:", siteMode);
@@ -73,7 +75,8 @@ function AppContent() {
           {/* <Route path="/" element={<OrderManagement />} /> */}
 
           {/* New Routes */}
-
+          <Route path="/alumni" element={<AlumniPage />} />
+          <Route path="/admin" element={<AdminDash />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
