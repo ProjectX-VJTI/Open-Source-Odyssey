@@ -15,6 +15,7 @@ import VerticalTimeline from './Components/Timeline';
 import Carousel from './Components/Carousel';
 import Hero from './Components/Hero';
 import Footer from "./Components/Footer"
+import ProposalForm from './Components/ProposalForm';
 
 
 const Homepage = () => {
@@ -54,6 +55,7 @@ function App() {
         {/* <Route path="/time" element={<VerticalTimeline />} /> */}
 
         {/* <Route path="/" element={<OrderManagement />} /> */}
+        <Route path="/forms" element={<ProposalForm />} />
       </Routes>
       <Footer />
     </Router>
