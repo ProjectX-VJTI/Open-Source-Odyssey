@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FaUpload, FaUsers, FaPaperclip } from 'react-icons/fa';
-import { proposalSchema } from './ProposalFields';
+import * as yup from 'yup';
+import { FaFilePdf, FaSpinner } from 'react-icons/fa';
 import ProposalPreview from './ProposalPreview';
+import { proposalSchema } from './ProposalFields';
+import axios from 'axios';
 
 const ProposalForm = () => {
   const [formData, setFormData] = useState({});
-  const [images, setImages] = useState([]);
+  const [pdfs, setPdfs] = useState([]);
   const [references, setReferences] = useState([{ title: '', link: '' }]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { 
     control, 
     handleSubmit, 
-    formState: { errors, isSubmitting }, 
+    formState: { errors }, 
     setValue,
     reset 
   } = useForm({
@@ -21,20 +24,54 @@ const ProposalForm = () => {
     mode: 'onChange'
   });
 
-  const onSubmit = (data) => {
-    console.log('Proposal Submitted:', {
-      ...data,
-      images: images,
-      references
-    });
-    setFormData(data);
+  const onSubmit = async (data) => {
+    const hasEmptyReference = references.some(ref => 
+      !ref.title.trim() || !ref.link.trim()
+    );
+
+    if (hasEmptyReference) {
+      alert('Please fill in all reference fields or remove empty references');
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      setFormData(data);
+
+      const formDataToSend = new FormData();
+      Object.keys(data).forEach(key => {
+        if (key !== 'pdfs') {
+          formDataToSend.append(key, data[key]);
+        }
+      });
+
+      formDataToSend.append('references', JSON.stringify(references));
+      
+      pdfs.forEach(pdfFile => {
+        formDataToSend.append('pdfs', pdfFile);
+      });
+      
+      const response = await axios.post('http://localhost:3001/submit-proposal', formDataToSend, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+
+      alert('Proposal submitted successfully!');
+      
+      reset();
+      setPdfs([]);
+      setReferences([{ title: '', link: '' }]);
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert(error.response?.data?.message || 'Failed to submit proposal');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleImageUpload = (e) => {
+  const handlePdfUpload = (e) => {
     const files = Array.from(e.target.files);
-    const previews = files.map(file => URL.createObjectURL(file));
-    setImages(previews);
-    setValue('images', files);
+    setPdfs(files);
+    setValue('pdfs', files);
   };
 
   const addReferenceField = () => {
@@ -48,75 +85,144 @@ const ProposalForm = () => {
           <div className="text-4xl font-bold font-mono text-center mb-6 text-blue-500">Submit Proposal</div>
 
           <div className="grid grid-cols-2 gap-4">
-            <Controller name="name" control={control} defaultValue=""
+            <div>
+              <Controller 
+                name="name" 
+                control={control} 
+                defaultValue=""
+                render={({ field }) => (
+                  <div>
+                    <input 
+                      {...field} 
+                      placeholder="Your Name"
+                      className={`w-full p-3 flex items-center bg-slate-700 rounded-lg ${
+                        errors.name ? 'border-2 border-red-500' : ''
+                      }`}
+                    />
+                    {errors.name && (
+                      <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                    )}
+                  </div>
+                )}
+              />
+            </div>
+            <div>
+              <Controller 
+                name="email" 
+                control={control} 
+                defaultValue=""
+                render={({ field }) => (
+                  <div>
+                    <input 
+                      {...field} 
+                      type="email" 
+                      placeholder="Email Address"
+                      className={`w-full p-3 bg-slate-700 rounded-lg ${
+                        errors.email ? 'border-2 border-red-500' : ''
+                      }`}
+                    />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                    )}
+                  </div>
+                )}
+              />
+            </div>
+          </div>
+
+          <div>
+            <Controller 
+              name="mentors" 
+              control={control} 
+              defaultValue=""
               render={({ field }) => (
-                <div className="relative flex items-center">
-                  <input {...field} placeholder="Your Name"
-                    className={`w-full p-3 pl-10 bg-slate-700 rounded-lg ${
-                      errors.name ? 'border-2 border-red-500' : ''
+                <div>
+                  <input 
+                    {...field} 
+                    placeholder="Mentors (name1:email1, name2:email2)"
+                    className={`w-full p-3 bg-slate-700 rounded-lg ${
+                      errors.mentors ? 'border-2 border-red-500' : ''
                     }`}
                   />
-                  <FaUsers className="absolute left-3 text-slate-400" />
-                </div>
-              )}
-            />
-            <Controller name="email" control={control} defaultValue=""
-              render={({ field }) => (
-                <div className="relative flex items-center">
-                  <input {...field} type="email" placeholder="Email Address"
-                    className={`w-full p-3 pl-10 bg-slate-700 rounded-lg ${
-                      errors.email ? 'border-2 border-red-500' : ''
-                    }`}
-                  />
-                  <FaPaperclip className="absolute left-3 text-slate-400" />
+                  {errors.mentors && (
+                    <p className="text-red-500 text-sm mt-1">{errors.mentors.message}</p>
+                  )}
                 </div>
               )}
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <Controller name="proposalTitle" control={control} defaultValue=""
+            <Controller 
+              name="proposalTitle" 
+              control={control} 
+              defaultValue=""
               render={({ field }) => (
-                <input {...field} placeholder="Proposal Title"
-                  className={`w-full p-3 bg-slate-700 rounded-lg ${
-                    errors.proposalTitle ? 'border-2 border-red-500' : ''
-                  }`}
-                />
+                <div>
+                  <input 
+                    {...field} 
+                    placeholder="Proposal Title"
+                    className={`w-full p-3 bg-slate-700 rounded-lg ${
+                      errors.proposalTitle ? 'border-2 border-red-500' : ''
+                    }`}
+                  />
+                  {errors.proposalTitle && (
+                    <p className="text-red-500 text-sm mt-1">{errors.proposalTitle.message}</p>
+                  )}
+                </div>
               )}
             />
-            <Controller name="difficulty" control={control} defaultValue="beginner"
+            <Controller 
+              name="difficulty" 
+              control={control} 
+              defaultValue="beginner"
               render={({ field }) => (
-                <select {...field} className="w-full p-3 border-r-[12px] border-b-2 flex border-transparent bg-slate-700 rounded-lg">
-                  <option value="beginner">Beginner</option>
-                  <option value="intermediate">Intermediate</option>
-                  <option value="advanced">Advanced</option>
-                </select>
+                <div>
+                  <select 
+                    {...field} 
+                    className={`w-full p-3 border-r-[12px] border-b-2 flex border-transparent bg-slate-700 rounded-lg ${
+                      errors.difficulty ? 'border-2 border-red-500' : ''
+                    }`}
+                  >
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                  </select>
+                  {errors.difficulty && (
+                    <p className="text-red-500 text-sm mt-1">{errors.difficulty.message}</p>
+                  )}
+                </div>
               )}
             />
           </div>
 
-          <Controller name="mentors" control={control} defaultValue=""
+          <Controller 
+            name="description" 
+            control={control} 
+            defaultValue=""
             render={({ field }) => (
-              <input {...field} placeholder="Project Mentors"
-                className={`w-full p-3 bg-slate-700 rounded-lg ${
-                  errors.mentors ? 'border-2 border-red-500' : ''
-                }`}
-              />
-            )}
-          />
-
-          <Controller name="description" control={control} defaultValue=""
-            render={({ field }) => (
-              <textarea {...field} placeholder="Proposal Description" rows={4}
-                className="w-full p-3 bg-slate-700 rounded-lg resize-none"
-              />
+              <div>
+                <textarea 
+                  {...field} 
+                  placeholder="Proposal Description" 
+                  rows={4}
+                  className={`w-full p-3 bg-slate-700 rounded-lg resize-none ${
+                    errors.description ? 'border-2 border-red-500' : ''
+                  }`}
+                />
+                {errors.description && (
+                  <p className="text-red-500 text-sm mt-1">{errors.description.message}</p>
+                )}
+              </div>
             )}
           />
 
           <div className="space-y-3">
             {references.map((ref, index) => (
               <div key={index} className="grid grid-cols-2 gap-3">
-                <input placeholder="Reference Title" value={ref.title}
+                <input 
+                  placeholder="Reference Title" 
+                  value={ref.title}
                   onChange={(e) => {
                     const newRefs = [...references];
                     newRefs[index].title = e.target.value;
@@ -124,7 +230,9 @@ const ProposalForm = () => {
                   }}
                   className="p-3 bg-slate-700 rounded-lg"
                 />
-                <input placeholder="Reference Link" value={ref.link}
+                <input 
+                  placeholder="Reference Link" 
+                  value={ref.link}
                   onChange={(e) => {
                     const newRefs = [...references];
                     newRefs[index].link = e.target.value;
@@ -134,41 +242,61 @@ const ProposalForm = () => {
                 />
               </div>
             ))}
-            <button type="button" onClick={addReferenceField} 
-                className="text-blue-400 hover:text-blue-300 transition-colors"
+            <button 
+              type="button" 
+              onClick={addReferenceField} 
+              className="text-blue-400 hover:text-blue-300 transition-colors"
             >
               + Add Reference
             </button>
           </div>
 
           <div>
-            <input
-              type="file" multiple onChange={handleImageUpload}
-              className="hidden" id="image-upload" accept="image/*"
+            <input 
+              type="file" 
+              multiple 
+              onChange={handlePdfUpload}
+              className="hidden" 
+              id="pdf-upload" 
+              accept=".pdf"
             />
-            <label htmlFor="image-upload" className="flex items-center justify-center w-full 
-                p-4 border-2 border-dashed border-slate-600 rounded-lg cursor-pointer 
-                hover:border-blue-500 transition-colors"
+            <label 
+              htmlFor="pdf-upload" 
+              className={`flex items-center justify-center w-full 
+                p-4 border-2 border-dashed rounded-lg cursor-pointer 
+                transition-colors ${
+                  errors.pdfs 
+                    ? 'border-red-500 text-red-500' 
+                    : 'border-slate-600 text-slate-400 hover:border-blue-500'
+                }`}
             >
-              <FaUpload className="mr-3 text-slate-400" />
-              <span className="text-slate-400">Upload Project Images</span>
+              <FaFilePdf className="mr-3" />
+              <span>{errors.pdfs ? errors.pdfs.message : 'Upload Project PDFs'}</span>
             </label>
           </div>
 
-          <button type="submit" disabled={isSubmitting} className="w-full bg-blue-600 
-            text-white p-3 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            className={`w-full p-3 rounded-lg transition-colors ${
+              isSubmitting 
+                ? 'bg-blue-800 cursor-not-allowed' 
+                : 'bg-blue-600 hover:bg-blue-700'
+            } text-white flex items-center justify-center`}
           >
-            Submit Proposal
+            {isSubmitting ? (
+              <>
+                <FaSpinner className="mr-2 animate-spin" />
+                Submitting...
+              </>
+            ) : (
+              'Submit Proposal'
+            )}
           </button>
         </form>
 
-        <ProposalPreview formData={formData} references={references} images={images}/>
-
+        <ProposalPreview formData={formData} references={references} pdfs={pdfs}/>
       </div>
-      <svg className="absolute bottom-0 left-0 right-0 z-[-1] opacity-100" viewBox="0 0 1440 320"
-        style={{ clipPath: 'polygon(0 0, 100% 0, 100% 90%, 0 100%)' }}>
-        <use href="src/assets/wordcloud.svg" />
-      </svg>
     </div>
   );
 };

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
-    "axios": "^1.6.8",
+    "axios": "^1.7.9",
     "framer-motion": "^11.1.7",
     "gsap": "^3.12.5",
     "lil-gui": "^0.19.2",
@@ -25,6 +25,7 @@
     "react-router-dom": "^6.23.0",
     "react-spring": "^9.7.3",
     "react-three-fiber": "^6.0.13",
+    "react-toastify": "^11.0.3",
     "simple-icons": "^5.24.0",
     "stats.js": "^0.17.0",
     "three": "^0.165.0",
