@@ -19,7 +19,7 @@ const PageNotFound = () => {
       </div>
 
       {/* Go Back Button */}
-      <div className="mt-8">
+      <div className="mt-8 relative z-20"> 
         <Link 
           to="/" 
           className="block text-center text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-lg px-8 py-4 transition duration-300"
