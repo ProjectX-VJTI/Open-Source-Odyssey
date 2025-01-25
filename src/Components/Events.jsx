@@ -1,10 +1,10 @@
 import React from "react";
-import "../App.css";
+import { Chrono } from "react-chrono";
+import '../App.css'
 
 const Events = () => {
   const items = [
     {
-      id: 0,
       title: "March 19 2024",
       cardTitle: "Open Source Introduction",
       // cardSubtitle: "Men of the British Expeditionary Force (BEF) wade out to...",
@@ -17,7 +17,6 @@ const Events = () => {
       }
     },
     {
-      id: 1,
       title: "April 24 2024",
       cardTitle: "OpenCV Workshop",
       // cardSubtitle: "OpenCV is a library of programming functions mainly for real-time computer vision..",
@@ -30,7 +29,6 @@ const Events = () => {
       }
     },
     {
-      id: 2,
       title: "June - July 2024",
       cardTitle: "Selection Phase for batch of 2027",
       // cardSubtitle: "A surprise military strike by the Imperial Japanese Navy Air Service...",
@@ -43,7 +41,6 @@ const Events = () => {
       }
     },
     {
-      id: 3,
       title: "July - October",
       cardTitle: "Weekly Meets and project development phase",
       // cardSubtitle: "Men of the British Expeditionary Force (BEF) wade out to...",
@@ -56,7 +53,6 @@ const Events = () => {
       }
     },
     {
-      id: 4,
       title: "October 19 2024",
       cardTitle: "Final Presentation",
       // cardSubtitle: "Men of the British Expeditionary Force (BEF) wade out to...",
@@ -71,9 +67,36 @@ const Events = () => {
   ];
 
   return (
-    <div className="relative h-[90vh] bg-gradient-to-b from-[var(--vanilla)] to-[#d7824a] content-center">
-      <div className="p-3 max-w-full">
-        
+    <div className="relative h-[91.1vh] w-full ">
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px),radial-gradient(rgba(79,79,79,0.2)_1px,transparent_1px)] bg-[length:20px_20px]">
+        <div style={{ width: "100%", height: "90vh", padding: "2rem" }}>
+          <Chrono
+            items={items}
+            mode="VERTICAL_ALTERNATING"
+            disableToolbar={true}
+            theme={{
+              primary: "#fff",
+              secondary: "#e2e8f0",
+              cardBgColor: "rgba(30, 41, 59, 0.8)",
+              cardDetailsColor: "#e2e8f0",
+              cardSubtitleColor: "#a0aec0",
+              cardForeColor: "#fff",
+              titleColor: "#fff",
+              lineColor: "#4a5568",
+              cardText: "#e2e8f0",
+              dotColor: "#0b228c"
+            }}
+            className={{
+              card: "rounded-lg shadow-lg",
+              cardMedia: "rounded-t-lg",
+              cardSubTitle: "text-sm font-medium",
+              cardTitle: "text-lg font-bold",
+              controls: "my-controls",
+              title: "text-2xl font-bold mb-4",
+            }}
+            cardHeight={180}
+          />
+        </div>
       </div>
     </div>
   )

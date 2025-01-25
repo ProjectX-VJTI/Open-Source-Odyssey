@@ -2,45 +2,38 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CardRow = () => {
-  const descriptions = [
-    {
-      desc: "Click "
-    },
-    {
-      desc: ""
-    }
-  ]
-
   return (
-    <div className="relative h-[90vh] w-full bg-transparent">
-      <div className="h-[90vh] bg-gradient-to-b from-[var(--vanilla)] to-[#d7824a]">
-        <div className="flex flex-row w-4/5 mx-auto">
-          <div className="w-1/2 m-6 flex justify-center items-center p-4">
-            <Card title="Upcoming Project 2k24" link="/upcoming-projects" />
-          </div>
-          <div className="w-1/2 m-6 flex justify-center items-center p-4">
-            <Card title="Past Projects" link="/past-projects" />
-          </div>
-        </div>
+    <div className="relative h-[91.5vh] w-full bg-transparent">
+    <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
+
+    <div className="flex flex-row w-full h-[90vh] items-stretch">
+      <div className="w-1/2 m-6 flex justify-center items-center p-4">
+        <Card title="Upcoming Project 2k24" link="/upcoming-projects" />
       </div>
+      <div className="w-1/2 m-6 flex justify-center items-center p-4">
+        <Card title="Past Projects" link="/past-projects" />
+      </div>
+    </div>
+    </div>
     </div>
   );
 };
 
-const Card = ({ title, link, desc }) => {
+const Card = ({ title, link }) => {
   return (
-    <div className="w-full rounded-lg p-3 backdrop-blur-sm overflow-hidden flex-col justify-between transform hover:scale-105 transition duration-500 ease-in-out shadow-lg">
-      <div className="bg-glass">
-        <div>
-          <h5 className=" text-center font-bold text-3xl font-poppins text-[var(--rich-black)]">{title}</h5>
+    
+    <div className="rounded-lg  backdrop-blur-sm overflow-hidden w-full h-full flex flex-col justify-between transform hover:scale-105 transition duration-500 ease-in-out shadow-gradient border border-gray-700">
+      <div className="bg-glass p-5">
+        <div className="animate-bounce">
+          <h5 className=" text-center my-8 font-bold text-3xl font-mono tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-300 via-blue-400 to-purple-300">{title}</h5>
         </div>
-        <p className="text-[var(--rich-black)] pt-3 font-monts">
+        <p className="text-gray-300 pt-3 font-mono">
 
-          {desc}
+          Press on The Read More Button to know more!!! 
 
         </p>
       </div>
-      <Link to={link} className="block rounded-lg text-center font-poppins border-2 border-[var(--rich-black)] py-3">
+      <Link to={link} className="block text-center text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-b-lg text-sm px-5 py-3">
         Read more
       </Link>
     </div>
