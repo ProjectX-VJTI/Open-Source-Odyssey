@@ -1,12 +1,14 @@
 import React from 'react';
-import FeatureCard from './FeatureCard';
+import FeatureCard from './FeatureCard'; // Assuming FeatureCard is in the same directory
 
 const PastProjects = () => {
   return (
-    <div className="relative min-h-screen flex flex-col bg-slate-900">
-      <div className="flex-grow">
-        <div className="text-center overflow-y-auto mt-5">
-          <h1 className="text-5xl font-bold text-transparent my-6 py-4 bg-clip-text bg-gradient-to-r from-purple-500 via-blue-500 to-purple-600 mb-10">Past Projects</h1>
+    <div className="relative min-h-screen pb-2 w-full bg-slate-900">
+      <div className="absolute inset-0 bgC">
+        <div className="text-center overflow-y-auto mt-5 min-h-[80vh] max-h-[80vh]"> {/* Dynamic height */}
+          <h1 className="text-5xl font-bold text-transparent my-6 py-4 bg-clip-text bg-gradient-to-r from-purple-500 via-blue-500 to-purple-600 mb-10">
+            Past Projects
+          </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-10">
             <FeatureCard
               title="Transformer From Scratch"
@@ -38,7 +40,7 @@ const PastProjects = () => {
             <FeatureCard
               title="3D reconstruction from single RGB image"
               tag="|  Param  | Mrudul  |  Labhansh  |"
-              info="The 'Three-Dimensional Reconstruction from a Single RGB Image' project focuses on the field of computer vision and 3D reconstruction. The goal of this project is to develop algorithms and techniques that can take a single RGB image as input and generate a plausible 3D representation of the scene depicted in the image. This involves extracting depth information, estimating the shape of objects, and creating a 3D model that closely resembles the original scene. "
+              info="The 'Three-Dimensional Reconstruction from a Single RGB Image' project focuses on the field of computer vision and 3D reconstruction. The goal of this project is to develop algorithms and techniques that can take a single RGB image as input and generate a plausible 3D representation of the scene depicted in the image. This involves extracting depth information, estimating the shape of objects, and creating a 3D model that closely resembles the original scene."
               buttontext="Explore"
               style="glass-effect"
               tagStyle="gradient-text"
@@ -71,7 +73,7 @@ const PastProjects = () => {
               tagStyle="gradient-text"
               page="https://github.com/Raya679/Healthcare-Chatbot"
             />
-            <div className='flex justify-center w-full'>
+            <div className="flex justify-center w-full">
               <FeatureCard
                 title="Semantic Segmentation"
                 tag="|  Anoushka  |  Vedant  |  Abhi  |"
@@ -82,16 +84,6 @@ const PastProjects = () => {
                 page="https://github.com/extint/Semantic_Segmentation"
               />
             </div>
-
-            {/* <FeatureCard
-              title="Project Title 10"
-              tag="Development"
-              info="A project that brought new perspectives to software development."
-              buttontext="Learn More"
-              style="glass-effect"
-              tagStyle="gradient-text"
-              page="/project-details-10"
-            /> */}
           </div>
         </div>
       </div>
