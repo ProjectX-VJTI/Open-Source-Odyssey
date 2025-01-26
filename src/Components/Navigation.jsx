@@ -1,21 +1,48 @@
-// Enhanced Navigation component with updated styles
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/X_Logo.png';
 
 const Navigation = () => {
   return (
-    <nav className="flex justify-between items-center p-4 bg-gradient-to-r bg-slate-900 border-b-2 border-gray-700">
-      <div className="flex items-center">
-        <img src={logo} alt="Logo" className="h-12 w-12 mr-3 rounded-full" />
-        <span className="text-3xl font-mono font-bold text-white shadow-md">ProjectX</span>
+    <nav className="flex justify-between items-center px-6 py-4 bg-[#1E293B] shadow-lg">
+      {/* Logo Section */}
+      <div className="flex items-center space-x-4">
+        <img
+          src={logo}
+          alt="Logo"
+          className="h-12 w-12 rounded-full shadow-md border-2 border-blue-400"
+        />
+        <span className="text-2xl md:text-3xl font-bold text-white bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400">
+          Project X
+        </span>
       </div>
-      <div className="flex font-mono space-x-6">
-        <Link to="/" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Home</Link>
-        <Link to="/events" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Events</Link>
-        <Link to="/projects" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Projects</Link>
-        <Link to="/achievements" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Achievements</Link>
-        {/* <Link to="/staff" className="text-xl text-white hover:text-gray-200 transition-colors duration-300">Staff</Link> */}
+
+      {/* Navigation Links */}
+      <div className="flex space-x-8">
+        <Link
+          to="/"
+          className="text-lg font-medium text-gray-200 hover:text-white hover:underline transition duration-300"
+        >
+          Home
+        </Link>
+        <Link
+          to="/events"
+          className="text-lg font-medium text-gray-200 hover:text-white hover:underline transition duration-300"
+        >
+          Events
+        </Link>
+        <Link
+          to="/projects"
+          className="text-lg font-medium text-gray-200 hover:text-white hover:underline transition duration-300"
+        >
+          Projects
+        </Link>
+        <Link
+          to="/achievements"
+          className="text-lg font-medium text-gray-200 hover:text-white hover:underline transition duration-300"
+        >
+          Achievements
+        </Link>
       </div>
     </nav>
   );
