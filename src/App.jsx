@@ -1,68 +1,69 @@
-// Enhanced App component with updated styles and layout
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import NavbarCard from './Components/NavbarCard';
-import Navigation from './Components/Navigation';
-import Events from './Components/Events';
-import StudentManagement from './Components/Achievements';
-import Projects from './Components/Projects';
-import './App.css'
-import Achievements from './Components/Achievements';
-import PastProjects from './Components/PastProjects';
-import UpcomingProjects from './Components/UpcomingProjects';
-import VerticalTimeline from './Components/Timeline';
-import Carousel from './Components/Carousel';
-import Hero from './Components/Hero';
-import Footer from "./Components/Footer"
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navigation from "./Components/Navigation";
+import Events from "./Components/Events";
+import Projects from "./Components/Projects";
+import Achievements from "./Components/Achievements";
+import PastProjects from "./Components/PastProjects";
+import UpcomingProjects from "./Components/UpcomingProjects";
+import Carousel from "./Components/Carousel";
+import Hero from "./Components/Hero";
+import Footer from "./Components/Footer";
 
 const Homepage = () => {
   return (
     <div>
       <Hero />
-       {/* Text Section between Hero and Carousel */}
-      <div className="text-center py-8 px-4 md:px-12 bg-opacity-10 text-white">
-        <h2 className="text-4xl font-semibold mb-4">Welcome to Project X</h2>
-        <p className="text-xl">
-          We are an exclusive club at Veermata Jijabai Technological Institute, Mumbai. We provide a collaborative environment for students to learn, grow, and build projects together under mentorship. Explore our achievements, past projects, and upcoming events!
-        </p>
+
+      <div className="relative py-16 px-4 md:px-12 bg-gradient-to-b from-[#5720A8] to-[#111827] text-white">
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fadeIn bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+            Welcome to Project X
+          </h2>
+
+          <p className="text-lg md:text-xl text-gray-300 leading-relaxed animate-fadeIn delay-200 mx-auto max-w-3xl">
+            <span className="block font-semibold text-gray-300 mb-2">
+              We are an exclusive club at Veermata Jijabai Technological
+              Institute, Mumbai.
+            </span>
+            <span className="block text-gray-200">
+              We provide a collaborative environment for students to learn,
+              grow, and build projects together under mentorship. Explore our
+              achievements, past projects, and upcoming events!
+            </span>
+          </p>
+        </div>
       </div>
 
-      <div>
-        <Carousel />
+      <div className="py-16 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8 animate-fadeIn">
+            Our Highlights
+          </h2>
+          <Carousel />
+        </div>
       </div>
     </div>
   );
 };
 
-
-
-
 function App() {
   return (
-    <div className='bgC'>
-    <Router>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/achievements" element={<Achievements />} />
-        <Route path="/past-projects" element={<PastProjects />} />
-        <Route path="/upcoming-projects" element={<UpcomingProjects />} />
-        {/* <Route path="/time" element={<VerticalTimeline />} /> */}
-
-        {/* <Route path="/" element={<OrderManagement />} /> */}
-      </Routes>
-      <Footer />
-    </Router>
-    <div>
-    </div>
+    <div className="bgC">
+      <Router>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/past-projects" element={<PastProjects />} />
+          <Route path="/upcoming-projects" element={<UpcomingProjects />} />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 }
 
 export default App;
-
-{/* <div class="relative h-full w-full bg-slate-950"><div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"></div></div> */ }
